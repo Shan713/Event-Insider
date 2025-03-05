@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Seat Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #screen {
+            margin-bottom: 30px;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .seat img {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid transparent; /* Set initial border */
+        }
+        .seat.selected img {
+            filter: grayscale(100%);
+        }
+        .seat.booked img {
+            filter: grayscale(70%);
+            cursor: not-allowed;
+            border-color: #333; /* Dark border for booked seats */
+        }
+        #bookBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .row-letter {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Theatre Seat Selection</h1>
+        <div id="screen">
+            <p>Screen</p>
+        </div>
+        <div id="seats">
+            <!-- Seats will be dynamically generated here -->
+        </div>
+        <button id="bookBtn">Book Selected Seats</button>
+    </div>
+
+    <script>
+        const numRows = 10;
+        const numSeatsPerRow = 10;
+        const bookedSeats = [3, 7, 25, 35, 47]; // Example booked seats
+        const seatsContainer = document.getElementById('seats');
+        const selectedSeats = [];
+
+        function generateSeats() {
+            seatsContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            for (let row = 1; row <= numRows; row++) {
+                const rowDiv = document.createElement('div');
+                rowDiv.classList.add('row');
+                const rowLetterSpan = document.createElement('span');
+                rowLetterSpan.classList.add('row-letter');
+                rowLetterSpan.textContent = letters[row - 1];
+                rowDiv.appendChild(rowLetterSpan);
+                for (let seatNum = 1; seatNum <= numSeatsPerRow; seatNum++) {
+                    const seatId = (row - 1) * numSeatsPerRow + seatNum;
+                    const seatDiv = document.createElement('div');
+                    seatDiv.classList.add('seat');
+                    if (bookedSeats.includes(seatId)) {
+                        seatDiv.classList.add('booked');
+                    } else {
+                        seatDiv.dataset.seatId = seatId;
+                        seatDiv.addEventListener('click', toggleSeatSelection);
+                    }
+                    const seatImg = document.createElement('img');
+                    seatImg.src = 'ciema-chair.png'; 
+                    seatDiv.appendChild(seatImg);
+                    rowDiv.appendChild(seatDiv);
+                }
+                seatsContainer.appendChild(rowDiv);
+            }
+        }
+
+        function toggleSeatSelection(event) {
+            const seatDiv = event.target.closest('.seat');
+            if (!seatDiv) return;
+            const seatId = seatDiv.dataset.seatId;
+            if (!seatId) return;
+            seatDiv.classList.toggle('selected');
+            const index = selectedSeats.indexOf(seatId);
+            if (index === -1) {
+                selectedSeats.push(seatId);
+            } else {
+                selectedSeats.splice(index, 1);
+            }
+        }
+
+        document.getElementById('bookBtn').addEventListener('click', function() {
+    if (selectedSeats.length === 0) {
+        alert('Please select at least one seat.');
+    } else {
+        const confirmationMessage = `You have booked seats: ${selectedSeats.join(', ')}.`;
+        alert(confirmationMessage);
+        sessionStorage.setItem('bookedSeats', JSON.stringify(selectedSeats));
+        window.location.href = 'confirm.html';
+    }
+});
+
+        generateSeats();
+    </script>
+</body>
+</html>

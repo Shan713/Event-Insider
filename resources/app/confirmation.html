@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8eaf6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #424242;
+        }
+        .confirmation {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .confirmation-icon {
+            color: #4CAF50;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .booking-id {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation">
+        <div class="confirmation-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <p class="booking-id">Your booking has been confirmed! Booking ID: <span id="bookingId"></span></p>
+        <p>Redirecting to Homepage in 15 seconds.If not redirected automatically <a href="demopage.html" target="down">Click Here</a></p>
+    </div>
+
+    <script>
+        function generateBookingId() {
+            return Math.floor(Math.random() * 1000000); 
+        }
+
+        document.getElementById('bookingId').textContent = generateBookingId();
+        setTimeout(function() {
+            window.location.href = "homepage.html";
+        }, 15000);
+    </script>
+</body>
+</html>

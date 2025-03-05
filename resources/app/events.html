@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Insider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        a{
+            color: white;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #f4f9f9;
+        }
+
+        header {
+            background-color: #394867;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+      
+        main {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .event {
+            background-color: #ffffff;
+            margin: 10px;
+            width: 33%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .event img {
+            width: 500px;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+        }
+
+        h2, h3 {
+            color: #333333;
+        }
+
+        footer {
+            background-color: #394867;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #50cb93;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #40916c;
+        }
+
+        @media (max-width: 600px) {
+            .event {
+                width: 100%; /* Full width for small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        
+        <div class="event">
+            <img src="karthick_1.jpeg" alt="Karthik Live in Coimbatore">
+            <h3>Karthik Live in Coimbatore</h3>
+            <p>Date: May 20</p>
+            <p>Location: YMCA Ground</p>
+            <p>Starts from ₹500</p>
+            <button><a href="karthick.html">Learn More</a></button>
+        </div>
+        <div class="event">
+            <img src="raja_1.jpeg" alt="Raaja Live in Concert | Tirrupur">
+            <h3>Raaja Live in Concert | Tirrupur</h3>
+            <p>Date: May 27</p>
+            <p>Location:  YAVP PLAY GROUND</p>
+            <p>Starts from ₹749</p>
+            <button><a href="raja.html">Learn More</a></button>
+        </div>
+        <div class="event">
+            <img src="u_1.jpeg" alt="U1’s Long Drive - Live In Concert | Coimbatore">
+            <h3>U1’s Long Drive - Live In Concert | Coimbatore</h3>
+            <p>Date: June 29</p>
+            <p>Location:  Hindusthan college of arts and Science</p>
+            <p>Starts from ₹999</p>
+            <button><a href="u1.html">Learn More</a></button>
+        </div><div class="event">
+            <img src="shreya_1.jpeg" alt="Shreya Ghoshal “All Hearts Tour" | Bengaluru">
+            <h3>Shreya Ghoshal “All Hearts Tour" | Bengaluru</h3>
+            <p>Date: May 21</p>
+            <p>Location: New Horizon College of Engineering</p>
+            <p>Starts from ₹5999</p>
+            <button><a href="shreya_1.jpeg">Learn More</a></button>
+        </div>
+        <div class="event">
+            <img src="vijay_1.jpeg" alt="Suryan FM Rhythm with Vijay Antony | Puducherry">
+            <h3>Suryan FM Rhythm with Vijay Antony | Puducherry</h3>
+            <p>Date: June 15</p>
+            <p>Location: Expo Ground (New Harbour)</p>
+            <p>Starts from ₹999</p>
+            <button><a href="vijayanthony_.html">Learn More</a></button>
+        </div>
+        
+    </main>
+    <footer>
+        <p>© 2024 Event Insider. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Insider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #F4F1DE; /* Light beige background */
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        header {
+            background-color: #172A3A; /* Dark blue background */
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .event {
+            background-color: #ffffff;
+            margin: 20px auto;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .event img {
+            width: 450px;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+        }
+
+        h2, h3 {
+            color: #333333;
+        }
+
+        footer {
+            background-color: #172A3A; /* Dark blue background */
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #FF6B6B; /* Coral */
+            border: none;
+            color: white;
+            border-radius: 8px;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #E94560; /* Darker coral on hover */
+        }
+
+        @media (min-width: 600px) {
+            .event {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .event img {
+                width: 40%;
+            }
+
+            .event h3, .event p {
+                width: 50%;
+            }
+        }
+
+        .trending-events-header {
+            display: flex;
+            justify-content: space-between; /* Ensures the button and h2 are spaced out evenly */
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .trending-events-header button {
+            background-color: #FF6B6B; /* Coral */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 70px;
+            transition: background-color 0.3s ease;
+        }
+
+        .trending-events-header button:hover {
+            background-color: #E94560;
+        }
+
+        .trending-events-header a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+        }
+        .trending-events-header h2 {
+            margin-left: 65px;
+        }
+
+        #main_page {
+            background-color: white;
+            border-radius: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            width: 92.5%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+           
+        }
+
+        img {
+            transition: transform 0.5s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        .movie_info {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .info {
+            text-align: center;
+            font-family: comic sans MS;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="events">
+            <div class="trending-events-header">
+                <h2 >TRENDING EVENTS</h2>
+                <button><a href="events.html">View all</a></button>
+            </div>
+            <div class="event">
+                <img src="karthick_1.jpeg" alt="Karthik Live in Coimbatore">
+                <h3>Karthik Live in Chennai</h3>
+                <p>Date: May 20</p>
+                <p>Location: YMCA Ground</p>
+                <button><a href="karthick.html">Learn More</a></button>
+            </div>
+            <div class="event">
+                <img src="raja_1.jpeg" alt="Raaja Live In Concert">
+                <h3>Raaja Live In Concert</h3>
+                <p>Date: May 27</p>
+                <p>Location: YAVP PLAY GROUND</p>
+                <button><a href="raja.html">Learn More</a></button>
+            </div>
+        </section>
+        <section id="trending-movies">
+            <div class="trending-events-header">
+                <h2>TRENDING MOVIES</h2>
+                <button><a href="movie page.html">View all</a></button>
+            </div>
+            <div id="main_page">
+                <div class="movie_info">
+                    <img src="dune2poster.jpg" alt="Dune Part 2" width="275" height="375">
+                    <p class="info">Dune - Part 2</p>
+                    <p class="info">Language - English</p>
+                    <button type="button" onclick="window.location.href='movie_show_select.html'">Book tickets</button>
+                </div>
+                <div class="movie_info">
+                    <img src="godzilla-x-kong-the-new-empire-et00358147-1707980025 (1).avif" alt="Godzilla x Kong" width="275" height="375">
+                    <p class="info">Godzilla x Kong - The New Empire</p>
+                    <p class="info">Language - English</p>
+                    <button type="button" onclick="window.location.href='movie_show_select.html'">Book tickets</button>
+                </div>
+                <div class="movie_info">
+                    <img src="aaveshamPoster.jpg" alt="Aavesham" width="275" height="375">
+                    <p class="info">Aavesham</p>
+                    <p class="info">Language - Malayalam</p>
+                    <button type="button" onclick="window.location.href='movie_show_select.html'">Book tickets</button>
+                </div>
+                <div class="movie_info">
+                    <img src="manjummel boys photo.jpeg" alt="Manjummel Boys" width="275" height="375">
+                    <p class="info">Manjummel Boys</p>
+                    <p class="info">Language - Malayalam</p>
+                    <button type="button" onclick="window.location.href='movie_show_select.html'">Book tickets</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Event Insider. All rights reserved.</p>
+    </footer>
+</body>
+</html>

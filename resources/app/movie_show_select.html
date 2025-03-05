@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        body, html {
+            margin-top: 5px;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #F4F1DE; /* Light beige background */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+        h1 {
+            color: #172A3A;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .info, .booking {
+            flex-basis: 45%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .booking p {
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        button {
+            background-color: #FF6B6B; /* Coral */
+            border: none;
+            color: white;
+            border-radius: 8px;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #E94560; 
+        }
+
+        footer {
+            background-color: #172A3A; 
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+<body>
+    <h1>Select Your Show</h1>
+    <div class="container"> 
+        <div class="info">
+            <form onsubmit="submitForm(); return false;">
+                <h2>Select Theatre</h2>
+                <select name="theatre" id="theatre" required>
+                    <option value="" selected disabled>Select Theatre</option>
+                    <option value="KG Cinemas">KG Cinemas</option>
+                    <option value="PVR Brookfields">PVR Brookfields</option>
+                    <option value="INOX Prozone Mall">INOX Prozone Mall</option>
+                </select>
+                <br><br>
+                <h2>Select Date</h2>
+                <input type="date" id="showDate" name="showDate" min="" max="" required>
+                <br><br>
+                <h2>Available Shows</h2>
+                <label>
+                    <input type="radio" name="showtime" value="10:30 AM" required> 10:30 AM
+                </label><br>
+                <label>
+                    <input type="radio" name="showtime" value="01:00 PM" required> 01:00 PM
+                </label><br>
+                <label>
+                    <input type="radio" name="showtime" value="04:15 PM" required> 04:15 PM
+                </label><br>
+                <label>
+                    <input type="radio" name="showtime" value="07:30 PM" required> 07:30 PM
+                </label><br>
+                <p class="disclaimer">Non-cancellable</p>
+                <button type="submit">Book Tickets</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Event Insider. All rights reserved.</p>
+    </footer>
+    <script>
+        function submitForm() {
+            window.location.href = 'select_seats.html';
+        }
+
+        // Set min and max date for showDate input
+        window.onload = function() {
+            var today = new Date();
+            var maxDate = new Date();
+            maxDate.setDate(today.getDate() + 7); 
+
+            var todayStr = today.toISOString().split('T')[0];
+            var maxDateStr = maxDate.toISOString().split('T')[0];
+
+            document.getElementById("showDate").min = todayStr;
+            document.getElementById("showDate").max = maxDateStr;
+        };
+    </script>
+</body>
+</html>

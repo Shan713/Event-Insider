@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Selection - Concerts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #eceff1;
+            color: #333;
+        }
+        .container {
+            width: 60%;
+            margin: 2rem auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .ticket-form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group {
+            margin-bottom: 2rem;
+            width: 100%;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #34495e;
+        }
+        select {
+            width: 50%; 
+            padding: 10px; 
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .quantity-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 0 0.5rem;
+            transition: background-color 0.3s;
+        }
+        .quantity-button:hover {
+            background-color: #2980b9;
+        }
+        .quantity-input {
+            width: 100px;
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            margin: 0 0.5rem;
+        }
+        .advantages {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Tickets</h1>
+        <form class="ticket-form" onsubmit="submitForm(); return false;">
+            <div class="form-group">
+                <label for="ticket-type">Ticket Type:</label>
+                <select id="ticket-type" name="ticket-type" onchange="showAdvantages()" required>
+                    <option value="" selected disabled>Select Ticket Type</option>
+                    <option value="standard">Standard - ₹999</option>
+                    <option value="vip">VIP - ₹2500</option>
+                    <option value="vvip">VVIP - ₹3500</option>
+                </select>
+                
+                <div id="advantages" class="advantages"></div>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="decreaseQuantity()">-</button>
+                    <input type="number" id="quantity" class="quantity-input" name="quantity" min="1" max="10" value="1" disabled>
+                    <button type="button" class="quantity-button" onclick="increaseQuantity()">+</button>
+                </div>
+            </div>
+            <button type="submit">Proceed to Checkout</button>
+        </form>
+    </div>
+    <script>
+        function decreaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+                quantityInput.value = quantity - 1;
+            }
+        }
+
+        function increaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var quantity = parseInt(quantityInput.value);
+            if (quantity < 10) {
+                quantityInput.value = quantity + 1;
+            }
+        }
+
+        function showAdvantages() {
+            var ticketType = document.getElementById('ticket-type').value;
+            var advantagesDiv = document.getElementById('advantages');
+            var advantages = '';
+
+            switch (ticketType) {
+                case 'standard':
+                    advantages = '<p>Access to standard seating area. Affordable price.</p>';
+                    break;
+                case 'vip':
+                    advantages = '<p>Access to VIP seating area. Better view and amenities.</p>';
+                    break;
+                case 'vvip':
+                    advantages = '<p>Access to VVIP seating area. Best view and premium amenities.</p>';
+                    break;
+                default:
+                    advantages = '';
+            }
+
+            advantagesDiv.innerHTML = advantages;
+        }
+
+        function submitForm() {
+            var ticketType = document.getElementById('ticket-type').value;
+            var quantity = document.getElementById('quantity').value;
+            var price = document.getElementById('ticket-type').selectedOptions[0].text.split('- ₹')[1];
+            var totalPrice = parseInt(price) * parseInt(quantity);
+    
+            sessionStorage.setItem('ticketType', ticketType);
+            sessionStorage.setItem('quantity', quantity);
+            sessionStorage.setItem('totalPrice', totalPrice);
+    
+            window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>
